@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "6"
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+install:
+  - npm i --cache-min 600000
+before_script:
+  - export COVERALLS_REPO_TOKEN=$COVERALLS_TOKEN
+script:
+  - npm run unit
+after_success: 'npm run coveralls'
